@@ -1,0 +1,332 @@
+﻿@model EbtakrAlmanalntro.Models.IntroDLLModels.IntroDLLHomeViewModel
+@using EbtakrAlmanalntro.Helper;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Intro.cshtml";
+}
+
+<section id="about" class="about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12 overflow-hidden">
+                <div class="about-img wow fadeInRight">
+                    @try
+                    {
+                        <img src="@Model.IntroSetting.AboutAppImg">
+                    }
+                    catch (Exception) { }
+
+                </div>
+            </div>
+            <div class="col-md-6 col-12 d-flex align-items-center overflow-hidden">
+                <div class="about-text wow fadeInLeft">
+                    @try
+                    {
+                        <h3>@Model.IntroSetting.AboutApp</h3>
+                        <p>
+                            @Model.IntroSetting.AboutDescrioption
+                        </p>
+                    }
+                    catch (Exception) { }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="how" class="about-app">
+    <div class="container">
+        <h3 class="titl">مميزات التطبيق</h3>
+        <p class="textInfo">يقدم التطبيق مجموعة من المميزات و الخدمات لعملائنا</p>
+
+
+        <div class="row">
+            @try
+            {
+                if (Model.Adventages.Any())
+                {
+                    foreach (var item in Model.Adventages)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="howItem wow flipInY">
+                                <div class="icon">
+                                    <i class="far fa-star" aria-hidden="true"></i>
+                                </div>
+                                <div class="txt">
+                                    <h4 class="mt-3">@item.Title</h4>
+                                    <p class="gray">@item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+        </div>
+
+    </div>
+</section>
+
+<section id="slider" class="appPage mt-5 mb-5">
+    <div class="container">
+        <h3 class="titl">صفحات التطبيق</h3>
+        <p class="textInfo">نوفر لعملائنا نظرة شاملة وتفصيلية عن واجهة التطبيق، مما يسهل عليهم فهم وتقدير التجربة التي نوفرها بشكل مباشر وواضح</p>
+        <div class="firstcarousel owl-carousel owl-theme">
+            @if (Model.Slider.Any())
+            {
+                foreach (var item in Model.Slider)
+                {
+                    <div class="item">
+                        <img src="@item">
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+@try
+{
+    @if (!Model.IntroSetting.IsHiddenIntroVideo)
+{
+
+    <section class="videos">
+        <div class="container overflow-hidden">
+            <a data-fancybox="gallery" href="@Model.IntroSetting.VideoUrl">
+                <div class="video-display wow fadeInDown">
+                    <video>
+                      <source src="@Model.IntroSetting.VideoUrl" type="video/mp4">
+                      <source src="@Model.IntroSetting.VideoUrl" type="video/ogg">
+                      Your browser does not support HTML video.
+                    </video>
+
+                    <div class="playIcon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <source src="@Model.IntroSetting.VideoUrl" type="video/mp4">
+                </div>
+            </a>
+        </div>
+    </section>
+}
+
+}
+catch (Exception)
+{
+    
+}
+
+
+<section class="opinion mt-5 mb-5">
+    <div class="container pt-2 pb-4">
+        <h3 class="titl">اراء العملاء</h3>
+        <p class="textInfo">نهتم بجمع تقييمات وآراء عملائنا حيث أننا نعمل على تقديم خدماتنا بأفضل جودة ممكنة</p>
+        <div class="secondcarousel owl-carousel owl-theme mt-5 overflow-hidden">
+
+
+            @if (Model.customerOpinions.Any())
+            {
+                foreach (var item in Model.customerOpinions)
+                {
+                    <div class="item wow fadeInDown">
+                        <p class="gray">
+                            @item.Description
+                        </p>
+                        <div class="client-info">
+                            <img src="@item.Img" alt="">
+                            <div class="info">
+                                <p class="name">@item.Name</p>
+                                <ul class="rate">
+                                    @for (int i = 0; i < item.Rate; i++)
+                                    {
+                                        <li class="rated">
+                                            <i class="fas fa-star gold"></i>
+                                        </li>
+                                    }
+                                    @for (int i = 0; i < 5 - item.Rate; i++)
+                                    {
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="contact" class="Contact mt-5 mb-5">
+    <div class="container overflow-hidden">
+        <h3 class="titl mb-4">تواصل معنا</h3>
+        <form class="row wow fadeInDown" id="form1">
+            <div class="col-md-6 col-12">
+                <div class="form_label">
+                    <input type="text" id="Name" class="input_focus" placeholder="الاسم">
+                    <!-- <label class="float_label">الاسم</label> -->
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="form_label">
+                    <input type="text" id="Phone" class="input_focus" placeholder="الجوال" onkeypress='validate(event)'>
+                    <!-- <label class="float_label">الاسم</label> -->
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form_label">
+                    <input type="email" id="Email" class="input_focus" placeholder="البريد الالكتروني">
+                    <!-- <label class="float_label">الاسم</label> -->
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form_label">
+                    <textarea type="text" id="Msg" class="input_focus areaForm" placeholder="الرساله"></textarea>
+                    <!-- <label class="float_label">الاسم</label> -->
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form_label">
+                    <input type="button" onclick="SendMessage()" name="name" value="ارسال" />
+                    <!-- <label class="float_label">الاسم</label> -->
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+<section class="">
+    <div class="container overflow-hidden">
+        <h3 class="titl mb-4">شركاؤنا</h3>
+        <div class="partners-carousel owl-carousel">
+            @foreach(var item in Model.Partners)
+            {
+                <div class="item">
+                    <div class="partners-item">
+                        <img src="@item.ImageUrl" alt="">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    function SendMessage() {
+        var Name = $("#Name").val();
+        var Phone = $("#Phone").val();
+        var Email = $("#Email").val();
+        var Msg = $("#Msg").val();
+
+
+        if (Name == '') {
+            toastr.warning("من فضلك ادخل الاسم");
+            return false;
+        }
+        if (Phone == '') {
+            toastr.warning("من فضلك ادخل رقم الجوال");
+            return false;
+        }
+        if (Email == '') {
+            toastr.warning("من فضلك ادخل البريد الالكتروني");
+            return false;
+        }
+        if (!ValidateEmail(Email)) {
+            toastr.warning("من فضلك ادخل بريد الكتروني صحيح");
+            return false;
+        }
+        if (Msg == '') {
+            toastr.warning("من فضلك ادخل الرسالة");
+            return false;
+        }
+
+
+        $.post('/EbtakrAlmanalntro/SendMessage', { "Name": Name, "Phone": Phone, "Email": Email, "Msg": Msg }, function (response) {
+
+            toastr.success("تم الارسال بنجاح")
+            $("#Name").val('');
+            $("#Phone").val('');
+            $("#Email").val('');
+            $("#Msg").val('');
+        });
+    }
+
+
+
+    function ValidateEmail(mail) {
+
+        if (/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true)
+        }
+        return (false)
+    }
+
+    function validate(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+            // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        //var regex = /[0-9]|\./;
+        var regex = /^\d+$/;
+        if (!regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+
+</script>
+
+    <script>
+        $(document).ready(function(){
+            $(".partners-carousel").owlCarousel({
+                items:2,
+                loop: true,
+                rtl:true,
+                margin: 20,
+                dots: false,
+                autoplay: true,
+                slideTransition: 'linear',
+                autoplayTimeout: 2800,
+                autoplaySpeed: 2800,
+                autoplayHoverPause: true,
+                responsive:{
+                600:{
+                    items:5
+                },
+                400:{
+                    items: 3
+                }
+            }
+            });
+        });
+    </script>
+
+
+}
+
+

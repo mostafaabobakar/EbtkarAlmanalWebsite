@@ -1,0 +1,606 @@
+﻿@using System.Security.Claims
+@using EbtakrAlmanalntro.Data
+@using Microsoft.AspNetCore.Http
+@using EbtakrAlmanalntro.Services
+@using EbtakrAlmanalntro.Helper;
+@inject IIntroSettingServices _setting
+@inject EbtakrAlmanalntro.Data.ApplicationDbContext _db
+@using EbtakrAlmanalntro.Helper;
+
+@{
+    var Setting = await _setting.GetSetting("ar");
+    var socialMedia = _db.SocialMedias.Where(x => x.IsActive).Select(x => new { x.Name, x.Img, x.Url });
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>إبتكار المنال</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="~/Templetefiles/assets/img/EbtkarAmanal.jpg" rel="icon">
+    <link href="~/Templetefiles/assets/img/EbtkarAmanal.jpg" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Templetefiles/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Templetefiles/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Templetefiles/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Templetefiles/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Templetefiles/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="~/Templetefiles/assets/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: FlexStart
+    * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+    * Updated: Nov 01 2024 with Bootstrap v5.3.3
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                @*    <img src="~/Templetefiles/assets/img/logo.png" alt=""> *@
+                <img style="width: 106px; height: 103px;" src="~/Templetefiles/assets/img/Saudi_Vision_2030_logo.svg-min.png" alt="">
+                <h1 class="sitename">إبتكار المنال</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                 @*    <li><a href="#team">فريق العمل</a></li>
+                    <li><a href="blog.html">المدونه</a></li> *@
+                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#portfolio">منتجاتنا</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#about">نبذه عنا</a></li>
+                    <li><a href="#hero" class="active">الرئسيه</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            @*   <a class="btn-getstarted flex-md-shrink-0" href="index.html#about">Get Started</a> *@
+
+
+        </div>
+    </header>
+
+    <main class="main">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero section">
+
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <h1 data-aos="fade-up">إبتكار المنال</h1>
+                        <p data-aos="fade-up" data-aos-delay="100">شركة رائدة في مجال تقنية المعلومات بالمملكة العربية السعودية، نصنع الأفكار وننفذها بأساليب احترافية، نعزز التواجد الرقمي وندعم رؤية المملكة 2030 بخدمات احترافية، نجعلك تشاهد فكرتك منذ مولدها خطوة بخطوة وحتى انطلاقها بين كبار المشاريع المنافسة ، نطمح لمساعدتك ودعمك والوصول لرضاك.</p>
+                        <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
+                            <a href="#contact" class="btn-get-started">تواصل معنا <i class="bi bi-arrow-right"></i></a>
+                           @*  <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> *@
+                           
+                       </div>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                        <img src="~/Templetefiles/assets/img/hero-img.png" class="img-fluid animated" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /Hero Section -->
+        <!-- About Section -->
+        <section id="about" class="about section">
+
+            <div class="container" data-aos="fade-up">
+                <div class="row gx-0">
+
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="content" style="background-color:#b9f8f54f">
+                            <h3>من نحن</h3>
+                            <h2>تقدم شركة إبتكار المنال العديد من الحلول التقنية في كل المجالات</h2>
+                            <p>
+                                نحن شركة رائدة في مجال تقنية المعلومات في المملكة العربية السعودية، نعمل لنكون شريكًا لك في رحلة نجاحك من خلال تقديم خدمات متكاملة في تقنية المعلومات تشمل تطوير المواقع الإلكترونية، وتصميم واجهات المستخدم، وتطوير تطبيقات الجوال، وحلول الأمان والشبكات، والتسويق الرقمي، وغيرها الكثير؛ وذلك لتعزيز التواجد الرقمي ودعم رؤية المملكة 2030 من خلال تقديم خدمات احترافية.
+                            </p>
+                            <div class="text-center text-lg-start">
+                                <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                                    <span>Read More</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                        <img src="~/Templetefiles/assets/img/Group-1000002178.png" class="img-fluid" alt="">
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!-- /About Section -->
+
+        <div>
+            <div class="text-center">
+                <p style="color:#2ac0eb">لماذا تختارنا ؟</p>
+            </div>
+
+            <div>
+                <h2 class="text-center" style="color:#263238">ما يميزنا؟</h2>
+            </div>
+            <div class="container" id="containerflibbox">
+                <div class="flib-box-in">
+                    <div class="flib-box-in-inner">
+                        <div class="flib-box-in-front">
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="6" x2="12" y2="12" />
+                                    <line x1="12" y1="12" x2="16" y2="12" />
+                                </svg>
+                                الالتزام بالمواعيد
+                            </h3>
+                        </div>
+                        <div class="flib-box-in-back">
+                            <p>نلتزم بتقديم خدماتنا وفق الجداول الزمنية المحددة لضمان إنجاز الأعمال بكفاءة ودقة.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flib-box-in">
+                    <div class="flib-box-in-inner">
+                        <div class="flib-box-in-front">
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="12" y1="9" x2="12" y2="15" />
+                                    <line x1="9" y1="12" x2="15" y2="12" />
+                                </svg>
+                                الجودة
+                            </h3>
+                        </div>
+                        <div class="flib-box-in-back">
+                            <p>نحرص على تقديم خدمات ومنتجات بأعلى معايير الجودة لضمان رضا العملاء وتحقيق أفضل النتائج.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flib-box-in">
+                    <div class="flib-box-in-inner">
+                        <div class="flib-box-in-front">
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 7V4h16v3m0 4V8H4v3m0 4V12h16v3M4 17v-3h16v3H4z" />
+                                </svg>
+                                الابتكار
+                            </h3>
+                        </div>
+                        <div class="flib-box-in-back">
+                            <p>نؤمن بأهمية الابتكار والتفاني في تقديم أفضل الحلول لعملك؛ لذا نعمل دائمًا على تجاوز توقعاتك وابتكار حلولًا فريدة تُلبي احتياجاتك.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flib-box-in">
+                    <div class="flib-box-in-inner">
+                        <div class="flib-box-in-front">
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M14.7 9.3L12 12m0 0l-2.7-2.7M12 12l2.7 2.7M12 12L9.3 14.7" />
+                                </svg>
+                                مزايا إضافية
+                            </h3>
+                        </div>
+                        <div class="flib-box-in-back">
+                            <p>نقدم مزايا إضافية لعملائنا تشمل الدعم الفني المستمر وتخصيص العروض وفقًا لاحتياجاتهم الخاصة.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flib-box-in">
+                    <div class="flib-box-in-inner">
+                        <div class="flib-box-in-front">
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2a10 10 0 1 1-10 10 10 10 0 0 1 10-10zM12 6v12M6 12h12" />
+                                </svg>
+                                التواصل المستمر
+                            </h3>
+                        </div>
+                        <div class="flib-box-in-back">
+                            <p>نحرص على التواصل المستمر مع عملائنا للاستماع لاحتياجاتهم وملاحظاتهم وضمان تحسين دائم للخدمات المقدمة.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flib-box-in">
+                    <div class="flib-box-in-inner">
+                        <div class="flib-box-in-front">
+                            <h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 8l-7 7-7-7" />
+                                </svg>
+                                خدمات ما بعد البيع
+                            </h3>
+                        </div>
+                        <div class="flib-box-in-back">
+                            <p>نقدم خدمات ما بعد البيع لضمان رضا عملائنا واستمرار العلاقة معهم من خلال الدعم المتواصل والمتابعة الدائمة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" class="services section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>خدماتنا</h2>
+                <p>ابرز الخدمات<br></p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item item-cyan position-relative">
+                            @*  <i class="bi bi-activity icon"></i> *@
+                            <span> <img src="~/templetefiles/assets/img/mobileappimage.png" /></span>
+                            <h3> تصميم تطبيقات الجوال</h3>
+                            <p> يمكنك إنشاء تطبيق يُبرز نشاطك التجاري وينقل تجربتك إلى مستوى جديد تمامًا. يتميز التطبيق بتوفير ميزات إعلانية متعددة تساعدك على التفاعل مع عملائك بشكل احترافي وفعّال</p>
+                            @*  <a href="#" class="read-more stretched-link"><span>قراءة المزيد</span> <i class="bi bi-arrow-right"></i></a> *@
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-item item-orange position-relative">
+                            @*  <i class="bi bi-broadcast icon"></i> *@
+                            <span> <img src="~/templetefiles/assets/img/Web.png" /></span>
+                            <h3>تطوير المواقع</h3>
+                            <p>نحن نقدم خدمات تطوير مواقع إلكترونية مبتكرة تتيح لك الوصول إلى جمهورك بشكل فعال وتحقيق النجاح الرقمي.</p>
+                            @*  <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a> *@
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-item item-teal position-relative">
+                            @*   <i class="bi bi-easel icon"></i> *@
+                            <span> <img src="~/templetefiles/assets/img/odoo.png" /></span>
+                            <h3>أنظمة أودو Odoo</h3>
+                            <p>مع نظام أودو اختر لأعمالك أقوى نظام إداري في العالم ببساطة تابع التشغيل والإدارة والإنتاجية من واجهة واحدة مهما كان حجم أعمالك </p>
+                            @* <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a> *@
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-item item-red position-relative">
+                            @* <i class="bi bi-bounding-box-circles icon"></i> *@
+                            <span> <img src="~/templetefiles/assets/img/digitalMarking.png" style="width:150px;height:150px" /></span>
+                            <h3>تسويق الكتروني </h3>
+                            <p> نقدم حلول تسويقية استراتيجية وشاملة لتحقيق أهدافك في الترويج للمنتجات والخدمات عبر منصات التسويق الرقمي المختلفة. يعتمد فريقنا الاحترافي ذو الخبرة على أحدث الأدوات والتقنيات لتحليل السوق وتصميم حملات إعلانية مبتكرة، مع التركيز على تحسين الأداء وزيادة التفاعل مع الجمهور المستهدف. نحن نعمل بتوافق داخل بيئة عمل رقمية حديثة لضمان الوصول إلى نتائج ملموسة وتحقيق أقصى استفادة من استراتيجيات التسويق عبر الإنترنت </p>
+
+                        </div>
+                    </div> <!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="service-item item-indigo position-relative">
+                            @*   <i class="bi bi-calendar4-week icon"></i> *@
+                            <span> <img src="~/templetefiles/assets/img/motionGraphic.png" style="width:150px;height:150px" /></span>
+                            <h3>موشن جرافيك</h3>
+                            <p>نحن نعمل على تطوير استراتيجيات تسويق رقمية مبتكرة لزيادة تفاعل علامتك التجارية مع جمهورك المستهدف وتحقيق نتائج قابلة للقياس من خلال استراتيجيات تسويقية رقمية متكاملة، نساعدك في تحقيق النجاح والنمو المستدام لعملك عبر منصات الإنترنت المختلفة</p>
+                            @*  <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a> *@
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                        <div class="service-item item-pink position-relative">
+                            @* <i class="bi bi-chat-square-text icon"></i> *@
+                            <span> <img src="~/templetefiles/assets/img/olineStore.png" style="width:384px;height:172px" /></span>
+                            <h3>متجر الكتروني</h3>
+                            <p>مستقبل أعمالك يبدأ هنا! افتح متجرك الإلكتروني الآن وتمتع بأحدث الحلول التقنية لتوسيع نطاق عملك وتسوق بكل سهولة وراحة، مع متجر إلكتروني مصمم خصيصًا لاحتياجاتك، مع تجربة مستخدم فريدة وواجهة سهلة الاستخدام</p>
+                            @*  <a href="#" class="read-more stretched-link"><span>Read More</span> <i class="bi bi-arrow-right"></i></a> *@
+                        </div>
+                    </div><!-- End Service Item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Services Section -->
+
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats section">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-5 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>عميل راضي</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-5 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-journal-richtext color-orange flex-shrink-0" style="color: #ee6c20;"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>المشاريع</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Stats Section -->
+
+        <!-- Clients Section -->
+        <section id="clients" class="clients section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>عملائنا </h2>
+                <p>أفضل العملاء<br></p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+                        {
+                          "loop": true,
+                          "speed": 600,
+                          "autoplay": {
+                            "delay": 5000
+                          },
+                          "slidesPerView": "auto",
+                          "pagination": {
+                            "el": ".swiper-pagination",
+                            "type": "bullets",
+                            "clickable": true
+                          },
+                          "breakpoints": {
+                            "320": {
+                              "slidesPerView": 2,
+                              "spaceBetween": 40
+                            },
+                            "480": {
+                              "slidesPerView": 3,
+                              "spaceBetween": 60
+                            },
+                            "640": {
+                              "slidesPerView": 4,
+                              "spaceBetween": 80
+                            },
+                            "992": {
+                              "slidesPerView": 6,
+                              "spaceBetween": 120
+                            }
+                          }
+                        }
+                    </script>
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><img src="~/Templetefiles/assets/img/rokn-1.png" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="~/Templetefiles/assets/img/482522356_3334828669980905_5094865510248965573_n-2.jpg" class="img-fluid" alt=""></div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+
+        </section><!-- /Clients Section -->
+        <!-- Recent Posts Section -->
+       
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h1> تواصل معنا </h1>
+                <div>
+                    دعنا نكون شركاء نجاحك، إذا كان لديك استفسارات أو تحتاج إلى مزيد من المعلومات
+                    اكتب لنا الآن وسنقوم بالرد في أقرب وقت ممكن!
+
+                </div>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-6">
+
+                        <div class="row gy-4">
+                            <div class="col-md-6">
+                                <div class="info-item" data-aos="fade" data-aos-delay="200">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <h3>العنوان</h3>
+                                    <p> شارع عبد الرحمن الغافقي</p>
+                                    <p>الروضة، الرياض</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                            <div class="col-md-6">
+                                <div class="info-item" data-aos="fade" data-aos-delay="300">
+                                    <i class="bi bi-telephone"></i>
+                                    <h3>اتصل بنا</h3>
+                                    <p>0508881121</p>
+                                    <p>0542842534</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                            <div class="col-md-6">
+                                <div class="info-item" data-aos="fade" data-aos-delay="400">
+                                    <i class="bi bi-envelope"></i>
+                                    <h3>البريد الالكتروني</h3>
+                                    <p>ebtkar.almanal@gmail.com</p>
+                                 @*    <p>contact@example.com</p> *@
+                                </div>
+                            </div><!-- End Info Item -->
+
+                            <div class="col-md-6">
+                                <div class="info-item" data-aos="fade" data-aos-delay="500">
+                                    <i class="bi bi-clock"></i>
+                                    <h3>مواعيد العمل</h3>
+                                    <p>السبت - الخميس</p>
+                                    <p>9:00AM - 06:00PM</p>
+                                </div>
+                            </div><!-- End Info Item -->
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                            <div class="row gy-4">
+
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="الاسم" required="">
+                                </div>
+
+                                <div class="col-md-6 ">
+                                    <input type="email" class="form-control" name="email" placeholder="البريد الالكتروني" required="">
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="text" class="form-control" name="Subject" placeholder="الموضوع" required="">
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea class="form-control" name="message" rows="6" placeholder="الرساله" required=""></textarea>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <div class="loading">Loading</div>
+                                    <div class="error-message"></div>
+                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                                    <button type="submit">إرسال</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div><!-- End Contact Form -->
+
+                </div>
+
+            </div>
+
+        </section><!-- /Contact Section -->
+
+    </main>
+    @RenderSection("Scripts", required: false)
+    <footer id="footer" class="footer">
+
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="container footer-top">
+                    <div class="row gy-4">
+                        <div class="col-lg-4 col-md-6 footer-about">
+                            <a href="index.html" class="d-flex align-items-center">
+                                <span class="sitename">إبتكار المنال</span>
+                            </a>
+                            <div class="footer-contact pt-3">
+                                <p>شارع عبد الرحمن الغافقي</p>
+                                <p>الروضة، الرياض</p>
+                                <p class="mt-3"><strong>Phone:</strong> <span>0508881121</span></p>
+                                <p><strong>البريد الالكتروني:</strong> <span>ebtkar.almanal@gmail.com</span></p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 footer-links">
+                            <h4>روابط مفيدة</h4>
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">الرئسيه</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">نبذه عنا</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">خدماتنا</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">تواصل معنا</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 footer-links">
+                            <h4>خدماتنا</h4>
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">تصميم تطبيقات الجوال</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">تطوير المواقع</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">أنظمة أودو Odoo</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">تسويق الكتروني</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">موشن جرافيك</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12">
+                            <h4>تابعنا</h4>
+                            <p>تابعنا على وسائل التواصل الاجتماعي</p>
+                            <div class="social-links d-flex">
+                                <a href=""><i class="bi bi-twitter-x"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><div class="row justify-content-center text-center">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>جميع الحقوق محفوظة لشركة</span> <strong class="px-1 sitename">إبتكار المنال</strong></p>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you've purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+               @*  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> *@
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Templetefiles/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Templetefiles/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Templetefiles/assets/vendor/aos/aos.js"></script>
+    <script src="~/Templetefiles/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Templetefiles/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/Templetefiles/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Templetefiles/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Templetefiles/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/Templetefiles/assets/js/main.js"></script>
+
+</body>
+
+</html>
