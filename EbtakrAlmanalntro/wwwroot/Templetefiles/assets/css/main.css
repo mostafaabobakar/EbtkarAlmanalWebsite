@@ -61,9 +61,10 @@
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
 body {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  font-family: var(--default-font);
+    color: var(--default-color);
+    background-color: var(--background-color);
+    /* font-family: var(--default-font);*/
+    font-family: sans-serif;
 }
 
 a {
@@ -83,20 +84,23 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--heading-color);
-  font-family: var(--heading-font);
+    /*color: var(--heading-color);*/
+    color: #0d0303;
+    font-family: var(--heading-font);
 }
-
+.flib-box-frontStyle {
+    color: #fff;
+}
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
+    display: none;
+    background: #df1529;
+    color: #ffffff;
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 24px;
+    font-weight: 600;
 }
 
 .php-email-form .sent-message {
@@ -145,7 +149,7 @@ h6 {
 .header {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 20px 0;
+  padding: 0px 0;
   transition: all 0.5s;
   z-index: 997;
 }
@@ -154,10 +158,10 @@ h6 {
   line-height: 1;
 }
 
-.header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
-}
+    .header .logo img {
+        max-height: 131px;
+        width: auto;
+    }
 
 .header .logo h1 {
   font-size: 30px;
@@ -2773,15 +2777,17 @@ section,
 
 
 #containerflibbox {
-    display: grid;
+      display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px; /* Reduce the gap between items */
+    gap: 10px;
 }
 
 .flib-box-in {
     width: 400px; /* Increase the width */
-    height:200px; /* Increase the height */
+    height: 200px; /* Increase the height */
     perspective: 1000px; /* Prevents distortion */
+    perspective: 1000px;
+    margin: auto; /* Center align */
 }
 
 .flib-box-in-inner {
@@ -2806,7 +2812,8 @@ section,
     font-weight: bold;
     color: white;
     backface-visibility: hidden; /* Prevents flickering */
-    background-color: #2AC0EB; /* Ensures both sides have the same color */
+    background-color: #2ac0eb; /* /* Ensures both sides have the same color 
+   /* background-color: #2AC0EB;*/ /* Ensures both sides have the same color */
 }
 
 .flib-box-in-front {
@@ -2823,7 +2830,18 @@ section,
     transform: rotateY(180deg);
 }
 
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    #containerflibbox {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    }
+}
 
+@media screen and (max-width: 768px) {
+    #containerflibbox {
+        grid-template-columns: repeat(1, 1fr); /* Single column for mobile */
+    }
+}
 .centered-text {
     display: flex;
     flex-direction: column; /* Stack the text vertically */

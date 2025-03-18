@@ -10,9 +10,10 @@
 @{
     var Setting = await _setting.GetSetting("ar");
     var socialMedia = _db.SocialMedias.Where(x => x.IsActive).Select(x => new { x.Name, x.Img, x.Url });
+    var clients = _db.OurClients.Where(c => c.IsActive).Select(c => new { c.ImageUrl });
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -22,8 +23,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="~/Templetefiles/assets/img/EbtkarAmanal.jpg" rel="icon">
-    <link href="~/Templetefiles/assets/img/EbtkarAmanal.jpg" rel="apple-touch-icon">
+    <link href="~/Templetefiles/assets/img/logo.jfif" rel="icon">
+    <link href="~/Templetefiles/assets/img/logo.jfif" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -52,33 +53,32 @@
 <body class="index-page">
 
     <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-            <a href="index.html" class="logo d-flex align-items-center me-auto">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                @*    <img src="~/Templetefiles/assets/img/logo.png" alt=""> *@
-                <img style="width: 106px; height: 103px;" src="~/Templetefiles/assets/img/Saudi_Vision_2030_logo.svg-min.png" alt="">
-                <h1 class="sitename">إبتكار المنال</h1>
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+            <!-- Right Logo -->
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img src="~/Templetefiles/assets/img/logo.jfif" alt="">
             </a>
 
+            <!-- Navigation (Centered) -->
             <nav id="navmenu" class="navmenu">
-                <ul>
-                 @*    <li><a href="#team">فريق العمل</a></li>
-                    <li><a href="blog.html">المدونه</a></li> *@
-                    <li><a href="#contact">تواصل معنا</a></li>
-                    <li><a href="#portfolio">منتجاتنا</a></li>
+                <ul class="d-flex gap-3">
+                    <li><a href="#hero" class="active">الرئيسية</a></li>
+                    <li><a href="#about"> نبذة عنا</a></li>
                     <li><a href="#services">خدماتنا</a></li>
-                    <li><a href="#about">نبذه عنا</a></li>
-                    <li><a href="#hero" class="active">الرئسيه</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#clients">عملائنا</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            @*   <a class="btn-getstarted flex-md-shrink-0" href="index.html#about">Get Started</a> *@
-
+            <!-- Left Logo -->
+            <a href="#hero" class="logo d-flex align-items-center">
+                <img style="width: 119px;height: 70px;" src="~/Templetefiles/assets/img/Saudi_Vision_2030_logo.svg-min.png" alt="">
+            </a>
 
         </div>
     </header>
+
 
     <main class="main">
 
@@ -90,11 +90,12 @@
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
                         <h1 data-aos="fade-up">إبتكار المنال</h1>
                         <p data-aos="fade-up" data-aos-delay="100">شركة رائدة في مجال تقنية المعلومات بالمملكة العربية السعودية، نصنع الأفكار وننفذها بأساليب احترافية، نعزز التواجد الرقمي وندعم رؤية المملكة 2030 بخدمات احترافية، نجعلك تشاهد فكرتك منذ مولدها خطوة بخطوة وحتى انطلاقها بين كبار المشاريع المنافسة ، نطمح لمساعدتك ودعمك والوصول لرضاك.</p>
+
                         <div class="d-flex flex-column flex-md-row" data-aos="fade-up" data-aos-delay="200">
-                            <a href="#contact" class="btn-get-started">تواصل معنا <i class="bi bi-arrow-right"></i></a>
-                           @*  <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> *@
-                           
-                       </div>
+                            <a href="#contact" class="btn-get-started d-flex align-items-center gap-2">
+                                تواصل معنا <i class="bi bi-arrow-left"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out">
                         <img src="~/Templetefiles/assets/img/hero-img.png" class="img-fluid animated" alt="">
@@ -104,13 +105,13 @@
 
         </section><!-- /Hero Section -->
         <!-- About Section -->
-        <section id="about" class="about section">
+        <section id="about" class="about section" style="background-color:#b9f8f54f">
 
             <div class="container" data-aos="fade-up">
                 <div class="row gx-0">
 
                     <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                        <div class="content" style="background-color:#b9f8f54f">
+                        <div class="content">
                             <h3>من نحن</h3>
                             <h2>تقدم شركة إبتكار المنال العديد من الحلول التقنية في كل المجالات</h2>
                             <p>
@@ -118,8 +119,8 @@
                             </p>
                             <div class="text-center text-lg-start">
                                 <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                    <span>Read More</span>
-                                    <i class="bi bi-arrow-right"></i>
+                                    <span>اكتشف المزيد عنا</span>
+                                   @*  <i class="bi bi-arrow-left"></i> *@
                                 </a>
                             </div>
                         </div>
@@ -135,9 +136,9 @@
         </section><!-- /About Section -->
 
         <div>
-            <div class="text-center">
+         @*    <div class="text-center">
                 <p style="color:#2ac0eb">لماذا تختارنا ؟</p>
-            </div>
+            </div> *@
 
             <div>
                 <h2 class="text-center" style="color:#263238">ما يميزنا؟</h2>
@@ -146,7 +147,7 @@
                 <div class="flib-box-in">
                     <div class="flib-box-in-inner">
                         <div class="flib-box-in-front">
-                            <h3>
+                            <h3 class="flib-box-frontStyle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10" />
                                     <line x1="12" y1="6" x2="12" y2="12" />
@@ -163,7 +164,7 @@
                 <div class="flib-box-in">
                     <div class="flib-box-in-inner">
                         <div class="flib-box-in-front">
-                            <h3>
+                            <h3 class="flib-box-frontStyle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                                     <line x1="12" y1="9" x2="12" y2="15" />
@@ -180,7 +181,7 @@
                 <div class="flib-box-in">
                     <div class="flib-box-in-inner">
                         <div class="flib-box-in-front">
-                            <h3>
+                            <h3 class="flib-box-frontStyle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M4 7V4h16v3m0 4V8H4v3m0 4V12h16v3M4 17v-3h16v3H4z" />
                                 </svg>
@@ -195,7 +196,7 @@
                 <div class="flib-box-in">
                     <div class="flib-box-in-inner">
                         <div class="flib-box-in-front">
-                            <h3>
+                            <h3 class="flib-box-frontStyle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10" />
                                     <path d="M14.7 9.3L12 12m0 0l-2.7-2.7M12 12l2.7 2.7M12 12L9.3 14.7" />
@@ -211,7 +212,7 @@
                 <div class="flib-box-in">
                     <div class="flib-box-in-inner">
                         <div class="flib-box-in-front">
-                            <h3>
+                            <h3 class="flib-box-frontStyle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 2a10 10 0 1 1-10 10 10 10 0 0 1 10-10zM12 6v12M6 12h12" />
                                 </svg>
@@ -226,7 +227,7 @@
                 <div class="flib-box-in">
                     <div class="flib-box-in-inner">
                         <div class="flib-box-in-front">
-                            <h3>
+                            <h3 class="flib-box-frontStyle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M19 8l-7 7-7-7" />
                                 </svg>
@@ -321,8 +322,6 @@
             </div>
 
         </section><!-- /Services Section -->
-
-
         <!-- Stats Section -->
         <section id="stats" class="stats section">
 
@@ -355,7 +354,6 @@
             </div>
 
         </section><!-- /Stats Section -->
-
         <!-- Clients Section -->
         <section id="clients" class="clients section">
 
@@ -402,8 +400,13 @@
                         }
                     </script>
                     <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="~/Templetefiles/assets/img/rokn-1.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="~/Templetefiles/assets/img/482522356_3334828669980905_5094865510248965573_n-2.jpg" class="img-fluid" alt=""></div>
+                        @*  <div class="swiper-slide"><img src="~/Templetefiles/assets/img/rokn-1.png" class="img-fluid" alt=""></div>
+                        <div class="swiper-slide"><img src="~/Templetefiles/assets/img/482522356_3334828669980905_5094865510248965573_n-2.jpg" class="img-fluid" alt=""></div> *@
+                        @foreach (var client in clients)
+                        {
+                            var clientUrl = HelperMethods.BaisUrlHoste + client.ImageUrl;
+                            <div class="swiper-slide"><img src="@clientUrl" class="img-fluid" alt=""></div>
+                        }
 
                     </div>
                     <div class="swiper-pagination"></div>
@@ -413,7 +416,6 @@
 
         </section><!-- /Clients Section -->
         <!-- Recent Posts Section -->
-       
         <!-- Contact Section -->
         <section id="contact" class="contact section">
 
@@ -447,8 +449,9 @@
                                 <div class="info-item" data-aos="fade" data-aos-delay="300">
                                     <i class="bi bi-telephone"></i>
                                     <h3>اتصل بنا</h3>
-                                    <p>0508881121</p>
-                                    <p>0542842534</p>
+                                    <p>0536342484</p>
+                                    <p>0539700508</p>
+                                    @*     <p>0542842534</p> *@
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -457,7 +460,9 @@
                                     <i class="bi bi-envelope"></i>
                                     <h3>البريد الالكتروني</h3>
                                     <p>ebtkar.almanal@gmail.com</p>
-                                 @*    <p>contact@example.com</p> *@
+                                    <p>info@ebtkarlmanal.com</p>
+                                    <p>sales@ebtkarlmanal.com</p>
+                                    @*    <p>contact@example.com</p> *@
                                 </div>
                             </div><!-- End Info Item -->
 
@@ -475,7 +480,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                        <form action="" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
                             <div class="row gy-4">
 
                                 <div class="col-md-6">
@@ -486,8 +491,8 @@
                                     <input type="email" class="form-control" name="email" placeholder="البريد الالكتروني" required="">
                                 </div>
 
-                                <div class="col-12">
-                                    <input type="text" class="form-control" name="Subject" placeholder="الموضوع" required="">
+                                <div class="col-6">
+                                    <input type="email" class="form-control" name="email" placeholder="رقم الجوال" required="">
                                 </div>
 
                                 <div class="col-12">
@@ -514,20 +519,20 @@
 
     </main>
     @RenderSection("Scripts", required: false)
-    <footer id="footer" class="footer">
+    <footer id="footer" class="footer" >
 
         <div class="footer-newsletter">
             <div class="container">
                 <div class="container footer-top">
                     <div class="row gy-4">
                         <div class="col-lg-4 col-md-6 footer-about">
-                            <a href="index.html" class="d-flex align-items-center">
+                            <a href="#hero" class="d-flex align-items-center">
                                 <span class="sitename">إبتكار المنال</span>
                             </a>
                             <div class="footer-contact pt-3">
                                 <p>شارع عبد الرحمن الغافقي</p>
                                 <p>الروضة، الرياض</p>
-                                <p class="mt-3"><strong>Phone:</strong> <span>0508881121</span></p>
+                                <p class="mt-3"><strong>رقم الجوال:</strong> <span>0536342484</span></p>
                                 <p><strong>البريد الالكتروني:</strong> <span>ebtkar.almanal@gmail.com</span></p>
                             </div>
                         </div>
@@ -535,8 +540,8 @@
                         <div class="col-lg-2 col-md-3 footer-links">
                             <h4>روابط مفيدة</h4>
                             <ul>
-                                <li><i class="bi bi-chevron-right"></i> <a href="#">الرئسيه</a></li>
-                                <li><i class="bi bi-chevron-right"></i> <a href="#">نبذه عنا</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">الرئيسية</a></li>
+                                <li><i class="bi bi-chevron-right"></i> <a href="#">نبذة عنا</a></li>
                                 <li><i class="bi bi-chevron-right"></i> <a href="#">خدماتنا</a></li>
                                 <li><i class="bi bi-chevron-right"></i> <a href="#">تواصل معنا</a></li>
                             </ul>
@@ -557,10 +562,28 @@
                             <h4>تابعنا</h4>
                             <p>تابعنا على وسائل التواصل الاجتماعي</p>
                             <div class="social-links d-flex">
-                                <a href=""><i class="bi bi-twitter-x"></i></a>
+                                @foreach (var item in socialMedia)
+                                {
+                                    string iconClass = "bi bi-globe"; // Default icon
+
+                                    if (item.Name.Contains("Twitter", StringComparison.OrdinalIgnoreCase))
+                                        iconClass = "bi bi-twitter-x";
+                                    else if (item.Name.Contains("Facebook", StringComparison.OrdinalIgnoreCase))
+                                        iconClass = "bi bi-facebook";
+                                    else if (item.Name.Contains("Instagram", StringComparison.OrdinalIgnoreCase))
+                                        iconClass = "bi bi-instagram";
+                                    else if (item.Name.Contains("LinkedIn", StringComparison.OrdinalIgnoreCase))
+                                        iconClass = "bi bi-linkedin";
+
+
+
+                                    <a href="@item.Url"><i class="@iconClass"></i></a>
+                                }
+
+                                @* <a href=""><i class="bi bi-twitter-x"></i></a>
                                 <a href=""><i class="bi bi-facebook"></i></a>
                                 <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a> *@
                             </div>
                         </div>
 
@@ -579,7 +602,7 @@
                 <!-- You can delete the links only if you've purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-               @*  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> *@
+                @*  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> *@
             </div>
         </div>
 

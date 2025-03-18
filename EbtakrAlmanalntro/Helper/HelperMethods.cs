@@ -9,6 +9,7 @@ namespace EbtakrAlmanalntro.Helper
     {
 
         public readonly static string BaisUrlHoste = "https://localhost:44365/";
+        //public readonly static string BaisUrlHoste = "http://ebtakralmanal-001-site1.ntempurl.com/";
         //public readonly static string BaisUrlHoste = "https://web.missingboard1.com/";
 
 
