@@ -261,6 +261,7 @@ h6 {
     position: relative;
   }
 
+ 
     .navmenu a,
     .navmenu a:focus {
         color: var(--nav-color);
